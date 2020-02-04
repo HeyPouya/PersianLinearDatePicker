@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">PersianLinearDatePicker</string>
     <string name="set_fix_time">Set fix time</string>
+    <string name="show_selected_time">show selected time</string>
 </resources>
