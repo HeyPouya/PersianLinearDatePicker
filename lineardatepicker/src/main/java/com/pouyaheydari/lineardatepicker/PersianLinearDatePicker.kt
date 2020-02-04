@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.layout_persian_linear_date_picker.view.*
  * @param context: Context that will be provided by Android system itself
  * @param attr: AttributeSet to let user set the needed properties inside xml
  *
- * @author: Pouya Heydari
+ * @author: Pouya Heydari -> https://pouyaheydari.com
  */
 class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLayout(context, attr) {
 
