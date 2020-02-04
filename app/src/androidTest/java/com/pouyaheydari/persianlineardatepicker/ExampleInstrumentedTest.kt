@@ -15,6 +15,10 @@ import org.junit.Assert.*
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
+
+    /**
+     * The default dummy test
+     */
     @Test
     fun useAppContext() {
         // Context of the app under test.

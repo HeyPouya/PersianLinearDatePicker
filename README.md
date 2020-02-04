@@ -13,7 +13,7 @@ An easy to use Android library to pick a date.
 You can set the minimum and maximum dates to be shown to the user. After user selects the desired date,
 you can get the year, month and day separator or joined together by any separator you like.
 
-Also the numbers are shown in persian by default to users.
+Also the numbers are shown in Persian by default to users.
 
 <img src="https://github.com/SirLordPouya/StarWars/blob/master/shots/Screenshot_1.png" width="250"> <img src="https://github.com/SirLordPouya/StarWars/blob/master/shots/Screenshot_2.png" width="250"> <img src="https://github.com/SirLordPouya/StarWars/blob/master/shots/Screenshot_3.png" width="250">
 

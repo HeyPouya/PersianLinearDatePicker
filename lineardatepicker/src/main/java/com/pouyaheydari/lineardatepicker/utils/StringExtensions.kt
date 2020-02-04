@@ -1,5 +1,8 @@
 package com.pouyaheydari.lineardatepicker.utils
 
+/**
+ * Turns all English numbers to Persian numbers
+ */
 fun String.toPersianNumber(): String {
     var newValue = replace("1", "۱")
     newValue = newValue.replace("2", "۲")
