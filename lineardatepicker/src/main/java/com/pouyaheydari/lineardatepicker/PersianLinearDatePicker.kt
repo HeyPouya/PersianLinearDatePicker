@@ -164,5 +164,14 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
     fun getFormattedDate(format: Char = '/') =
         "${yearPicker.value}$format${monthPicker.value}$format${dayPicker.value}"
 
+    /**
+     *  Returns the date in order of: Year Month Day in Persian numbers
+     *
+     *  @param format: The format to be put between segments. If user doesn't pass anything,
+     *  slash will be used by default
+     */
+    fun getPersianFormattedDate(format: Char = '/') =
+        "${yearPicker.value}$format${monthPicker.value}$format${dayPicker.value}".toPersianNumber()
+
 }
 
