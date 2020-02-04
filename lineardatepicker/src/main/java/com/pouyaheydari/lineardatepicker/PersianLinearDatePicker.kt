@@ -116,6 +116,9 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
 
         dateCorrectnessChecker(year, month, day)
 
+        if (month > 6)
+            setDays(30)
+
         yearPicker.value = year
         monthPicker.value = month
         dayPicker.value = day
