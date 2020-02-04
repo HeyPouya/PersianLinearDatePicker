@@ -46,7 +46,7 @@ I will add these features in the future:
 
 ## License
 
-PersianLinearDatePicker is released under the Apache License 2.0. See [LICENSE](https://github.com/SirLordPouya/PersianLinearDatePicker/blob/master/LICENSE) for details.
+PersianLinearDatePicker is released under the Apache License 2.0. See [LICENSE](https://github.com/SirLordPouya/PersianLinearDatePicker/blob/master/LICENSE.md) for details.
 
 Copyright (c) 2020 Pouya Heydari
 
