@@ -16,7 +16,7 @@ you can get the year, month and day separator or joined together by any separato
 Also the numbers are shown in Persian by default to users.
 
 <p align="center">
-<img src="https://github.com/SirLordPouya/PersianLinearDatePicker/blob/master/shots/Screenshot_1.png" width="250">
+<img src="https://github.com/SirLordPouya/PersianLinearDatePicker/blob/master/shots/Screenshot_2.png" width="450">
 </p>
 
 ## Description
