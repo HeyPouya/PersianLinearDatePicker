@@ -10,8 +10,8 @@ An easy to use Android library to pick a date.
 <img src="https://github.com/SirLordPouya/StarWars/blob/master/shots/appicon.png" width="250">
 </p>
 
-You can set the minimum and maxmimum dates to be shown to the user. After user selects the desired date,
-you can get the year, month and day seperately or joined together by any seperator you like.
+You can set the minimum and maximum dates to be shown to the user. After user selects the desired date,
+you can get the year, month and day separator or joined together by any separator you like.
 
 Also the numbers are shown in persian by default to users.
 
@@ -22,11 +22,11 @@ Also the numbers are shown in persian by default to users.
 ### Library
 
 This project is made by Kotlin and AndroidX completely and is not a forked or refactored code.
-The design is ispired by PersianDatePicker[https://github.com/alibehzadian/PersianDatePicker].
+The design is inspired by [PersianDatePicker](https://github.com/alibehzadian/PersianDatePicker).
 
-### Current Fuctions
+### Current Functions
 
-Functions that are avaiable in this library are:
+Functions that are available in this library are:
 
 *   setMaxYear
 *   setMinYear
