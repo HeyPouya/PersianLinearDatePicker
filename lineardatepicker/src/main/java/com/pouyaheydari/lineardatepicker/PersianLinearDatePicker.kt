@@ -41,11 +41,15 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
 
     private fun dayMonthAdapter() {
         monthPicker.setOnValueChangedListener { _, _, newVal ->
-            if (newVal > 6)
-                setDays(30)
-            else
-                setDays(31)
+            daysOfMonthFixer(newVal)
         }
+    }
+
+    private fun daysOfMonthFixer(month: Int) {
+        if (month > 6)
+            setDays(30)
+        else
+            setDays(31)
     }
 
     private fun setDays(maxDay: Int) {
@@ -184,7 +188,8 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
         yearPicker.setOnValueChangedListener { _, _, _ ->
             informListener(listener)
         }
-        monthPicker.setOnValueChangedListener { _, _, _ ->
+        monthPicker.setOnValueChangedListener { _, _, newVal ->
+            daysOfMonthFixer(newVal)
             informListener(listener)
         }
         dayPicker.setOnValueChangedListener { _, _, _ ->
