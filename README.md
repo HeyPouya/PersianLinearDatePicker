@@ -39,6 +39,7 @@ Functions that are available in this library are:
 *   getSelectedDay
 *   getFormattedDate
 *   getPersianFormattedDate
+*   setOnDateChangedListener
 
 ### Usage
 
@@ -55,7 +56,7 @@ First add maven repository to your project level gradle file:
  
  ```groovy
    dependencies {
-	  implementation 'com.github.SirLordPouya:PersianLinearDatePicker:1.0.0'
+	  implementation 'com.github.SirLordPouya:PersianLinearDatePicker:1.1.0'
 	}
   ```
 
