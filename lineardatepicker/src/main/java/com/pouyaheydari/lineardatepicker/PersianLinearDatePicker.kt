@@ -68,7 +68,6 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
         dayPicker.setFormatter {
             it.toString().toPersianNumber()
         }
-
     }
 
     /**
@@ -175,6 +174,4 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      */
     fun getPersianFormattedDate(format: Char = '/') =
         "${yearPicker.value}$format${monthPicker.value}$format${dayPicker.value}".toPersianNumber()
-
 }
-
