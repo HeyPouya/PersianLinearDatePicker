@@ -56,7 +56,7 @@ First add maven repository to your project level gradle file:
  
  ```groovy
    dependencies {
-	  implementation 'com.github.SirLordPouya:PersianLinearDatePicker:1.1.0'
+	  implementation 'com.github.SirLordPouya:PersianLinearDatePicker:1.2.0'
 	}
   ```
 
