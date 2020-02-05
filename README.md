@@ -45,9 +45,8 @@ Functions that are available in this library are:
 First add maven repository to your project level gradle file:
 
 ```groovy
-allprojects {
-   repositories {
-	   ...
+   allprojects {
+      repositories {
 		maven { url 'https://jitpack.io' }
 		}
 	}
@@ -55,7 +54,7 @@ allprojects {
  Then add the dependency:
  
  ```groovy
- dependencies {
+   dependencies {
 	  implementation 'com.github.SirLordPouya:PersianLinearDatePicker:1.0.0'
 	}
   ```
