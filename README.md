@@ -59,6 +59,18 @@ First add maven repository to your project level gradle file:
 	}
   ```
 
+Add PersianLinearDatePicker view to your xml:
+
+```xml
+    <com.pouyaheydari.lineardatepicker.PersianLinearDatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:maxYear="1420"
+        app:minYear="1320" />
+```
+Note that maxYear and minYear are optional. If you dont set any values for minYear or maxYear,
+1320..1420 will be used as default values.
 
 ### TODO
 
