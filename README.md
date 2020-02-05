@@ -5,6 +5,7 @@ An easy to use Android library to pick a date.
 [![Build Status](https://travis-ci.org/SirLordPouya/PersianLinearDatePicker.svg?branch=master)](https://travis-ci.org/SirLordPouya/PersianLinearDatePicker)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7e8f094fd77044b5b26bc6c157bfbbc3)](https://www.codacy.com/manual/SirLordPouya/AndroidAppUpdater?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SirLordPouya/AndroidAppUpdater&amp;utm_campaign=Badge_Grade)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
+[![](https://jitpack.io/v/SirLordPouya/PersianLinearDatePicker.svg)](https://jitpack.io/#SirLordPouya/PersianLinearDatePicker)
 
 <p align="center">
 <img src="https://github.com/SirLordPouya/StarWars/blob/master/shots/appicon.png" width="250">
@@ -38,6 +39,27 @@ Functions that are available in this library are:
 *   getSelectedDay
 *   getFormattedDate
 *   getPersianFormattedDate
+
+### Usage
+
+First add maven repository to your project level gradle file:
+
+```groovy
+allprojects {
+   repositories {
+	   ...
+		maven { url 'https://jitpack.io' }
+		}
+	}
+ ```
+ Then add the dependency:
+ 
+ ```groovy
+ dependencies {
+	  implementation 'com.github.SirLordPouya:PersianLinearDatePicker:1.0.0'
+	}
+  ```
+
 
 ### TODO
 
