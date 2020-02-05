@@ -14,7 +14,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:maxYear="1420"
+        app:minYear="1320" />
 
     <Button
         android:id="@+id/btnFixTime"

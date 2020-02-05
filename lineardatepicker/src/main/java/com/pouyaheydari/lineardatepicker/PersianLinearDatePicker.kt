@@ -174,4 +174,25 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      */
     fun getPersianFormattedDate(format: Char = '/') =
         "${yearPicker.value}$format${monthPicker.value}$format${dayPicker.value}".toPersianNumber()
+
+    /**
+     * Informs the listener that date is changed
+     *
+     * @param listener accepts a lambda to pass the year, month and day
+     */
+    fun setOnDateChangedListener(listener: (year: Int, month: Int, day: Int) -> Unit) {
+        yearPicker.setOnValueChangedListener { _, _, _ ->
+            informListener(listener)
+        }
+        monthPicker.setOnValueChangedListener { _, _, _ ->
+            informListener(listener)
+        }
+        dayPicker.setOnValueChangedListener { _, _, _ ->
+            informListener(listener)
+        }
+    }
+
+    private fun informListener(listener: (Int, Int, Int) -> Unit) {
+        listener(yearPicker.value, monthPicker.value, dayPicker.value)
+    }
 }

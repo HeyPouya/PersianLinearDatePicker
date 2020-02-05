@@ -21,5 +21,9 @@ class MainActivity : AppCompatActivity() {
         btnGetTime.setOnClickListener {
             Toast.makeText(this, datePicker.getFormattedDate(), Toast.LENGTH_LONG).show()
         }
+
+        datePicker.setOnDateChangedListener { year, month, day ->
+            Toast.makeText(this, datePicker.getFormattedDate(), Toast.LENGTH_LONG).show()
+        }
     }
 }
