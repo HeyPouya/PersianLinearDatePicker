@@ -8,7 +8,7 @@ An easy to use Android library to pick a date.
 [![](https://jitpack.io/v/SirLordPouya/PersianLinearDatePicker.svg)](https://jitpack.io/#SirLordPouya/PersianLinearDatePicker)
 
 <p align="center">
-<img src="https://github.com/SirLordPouya/StarWars/blob/master/shots/appicon.png" width="250">
+<img src="https://github.com/SirLordPouya/PersianLinearDatePicker/blob/master/shots/icon.png" width="250">
 </p>
 
 You can set the minimum and maximum dates to be shown to the user. After user selects the desired date,
