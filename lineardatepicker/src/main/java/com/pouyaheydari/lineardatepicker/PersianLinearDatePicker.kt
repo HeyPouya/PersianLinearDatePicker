@@ -20,8 +20,7 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
     constructor(context: Context) : this(context, null)
 
     init {
-        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        inflater.inflate(R.layout.layout_persian_linear_date_picker, this)
+        LayoutInflater.from(context).inflate(R.layout.layout_persian_linear_date_picker, this)
 
         val typedArray =
             context.obtainStyledAttributes(attr, R.styleable.PersianLinearDatePicker)
@@ -52,15 +51,16 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
             setDays(31)
     }
 
-    private fun setDays(maxDay: Int) {
-        dayPicker.minValue = 1
-        dayPicker.maxValue = maxDay
+    private fun setDays(maxDay: Int) = dayPicker.run {
+        minValue = 1
+        maxValue = maxDay
     }
 
-    private fun setMonths() {
-        monthPicker.minValue = 1
-        monthPicker.maxValue = 12
+    private fun setMonths() = monthPicker.run {
+        minValue = 1
+        maxValue = 12
     }
+
 
     private fun changeShowingNumbersToPersian() {
         yearPicker.setFormatter {
