@@ -4,8 +4,17 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import com.pouyaheydari.lineardatepicker.utils.CalendarTool
 import com.pouyaheydari.lineardatepicker.utils.toPersianNumber
 import kotlinx.android.synthetic.main.layout_persian_linear_date_picker.view.*
+import java.util.*
+
+
+const val DEFAULT_MIN_YEAR = 1320
+const val DEFAULT_MAX_YEAR = 1420
+const val DEFAULT_YEAR = 1400
+const val DEFAULT_MONTH = 1
+const val DEFAULT_DAY = 1
 
 /**
  * A persian date picker that is made by NumberPicker
@@ -17,40 +26,49 @@ import kotlinx.android.synthetic.main.layout_persian_linear_date_picker.view.*
  */
 class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLayout(context, attr) {
 
+    private var minYear = DEFAULT_MIN_YEAR
+    private var maxYear = DEFAULT_MAX_YEAR
+    private val gregorianCalendar = GregorianCalendar()
+    private val calendar = CalendarTool(gregorianCalendar)
+
     constructor(context: Context) : this(context, null)
 
     init {
-        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val inflater = LayoutInflater.from(context)
         inflater.inflate(R.layout.layout_persian_linear_date_picker, this)
 
         val typedArray =
             context.obtainStyledAttributes(attr, R.styleable.PersianLinearDatePicker)
-        val minYear =
-            typedArray.getInt(R.styleable.PersianLinearDatePicker_minYear, 1320)
-        val maxYear =
-            typedArray.getInt(R.styleable.PersianLinearDatePicker_maxYear, 1420)
+        minYear =
+            typedArray.getInt(R.styleable.PersianLinearDatePicker_minYear, DEFAULT_MIN_YEAR)
+        maxYear =
+            typedArray.getInt(R.styleable.PersianLinearDatePicker_maxYear, DEFAULT_MAX_YEAR)
+        val defaultYear =
+            typedArray.getInt(R.styleable.PersianLinearDatePicker_defaultYear, DEFAULT_YEAR)
+        val defaultMonth =
+            typedArray.getInt(R.styleable.PersianLinearDatePicker_defaultMonth, DEFAULT_MONTH)
+        val defaultDay =
+            typedArray.getInt(R.styleable.PersianLinearDatePicker_defaultDay, DEFAULT_DAY)
+
+        typedArray.recycle()
 
         setMinYear(minYear)
-        setMaxYear(maxYear)
+        setMaxYear(maxYear, minYear)
         setMonths()
-        setDays(31)
-        dayMonthAdapter()
+        daysOfMonthFixer(defaultYear, defaultMonth, defaultDay)
+        setOnDateChangedListener { _, _, _ -> }
         changeShowingNumbersToPersian()
-        typedArray.recycle()
+        setDate(defaultYear, defaultMonth, defaultDay)
     }
 
-    private fun dayMonthAdapter() {
-        monthPicker.setOnValueChangedListener { _, _, newVal ->
-            daysOfMonthFixer(newVal)
-        }
-    }
-
-    private fun daysOfMonthFixer(month: Int) {
-        if (month > 6)
+    private fun daysOfMonthFixer(year: Int, month: Int, day: Int) =
+        if (month == 12 && !calendar.setIranianDate(year, month, day).isLeap())
+            setDays(29)
+        else if (month > 6)
             setDays(30)
         else
             setDays(31)
-    }
+
 
     private fun setDays(maxDay: Int) {
         dayPicker.minValue = 1
@@ -78,31 +96,20 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      * To let user set the max year of date picker
      *
      * @param maxYear Maximum year that should be included in the picker
-     *
-     * @throws IllegalArgumentException if the max value is lesser than 1000 or min year
      */
-    @Throws(IllegalArgumentException::class)
-    fun setMaxYear(maxYear: Int) {
-        yearPicker.maxValue = getMaxYearOrError(maxYear)
+    fun setMaxYear(maxYear: Int, minYear: Int) {
+        yearPicker.maxValue =
+            if (maxYear >= minYear) maxYear else throw IllegalArgumentException("maxYear must be equals or greater that minYear")
     }
-
-    @Throws(IllegalArgumentException::class)
-    private fun getMaxYearOrError(maxYear: Int) =
-        if (maxYear > 1000 && maxYear > yearPicker.minValue) maxYear else
-            throw IllegalArgumentException(
-                "Maximum Year cant be less than 1000 or less than min year"
-            )
 
     /**
      * To let user set the min year of date picker
      *
      * @param minYear Minimum year that should be included in the picker
-     *
-     * @throws IllegalArgumentException if the min value is lesser than 1000
      */
-    @Throws(IllegalArgumentException::class)
     fun setMinYear(minYear: Int) {
-        yearPicker.minValue = getMinYearOrError(minYear)
+        yearPicker.minValue =
+            if (minYear > 1000) minYear else throw IllegalArgumentException("minYear must be greater that 1000")
     }
 
     /**
@@ -112,24 +119,18 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      * @param month a month to be set in picker
      * @param day a day to be set in picker
      *
-     * @throws IllegalArgumentException if the date cant be set int pickers
      */
-    @Throws(IllegalArgumentException::class)
     fun setDate(year: Int, month: Int, day: Int) {
-
         dateCorrectnessChecker(year, month, day)
-
-        if (month > 6)
-            setDays(30)
+        daysOfMonthFixer(year, month, day)
 
         yearPicker.value = year
         monthPicker.value = month
         dayPicker.value = day
     }
 
-    @Throws(IllegalArgumentException::class)
     private fun dateCorrectnessChecker(year: Int, month: Int, day: Int) {
-        if (year > yearPicker.maxValue || year < yearPicker.minValue)
+        if (year > maxYear || year < minYear)
             throw IllegalArgumentException(
                 "Year must be greater than Min year and lesser than Max year"
             )
@@ -140,11 +141,6 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
         if (month > 6 && day == 31)
             throw IllegalArgumentException("Passes day 31 for a month in first half of year")
     }
-
-    @Throws(IllegalArgumentException::class)
-    private fun getMinYearOrError(minYear: Int) =
-        if (minYear > 1000) minYear else
-            throw IllegalArgumentException("Minimum Year cant be less than 1000")
 
     /**
      * Returns selected year to user
@@ -185,19 +181,17 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      * @param listener accepts a lambda to pass the year, month and day
      */
     fun setOnDateChangedListener(listener: (year: Int, month: Int, day: Int) -> Unit) {
-        yearPicker.setOnValueChangedListener { _, _, _ ->
-            informListener(listener)
+        yearPicker.setOnValueChangedListener { _, _, newYear ->
+            if (monthPicker.value == 12)
+                daysOfMonthFixer(newYear, monthPicker.value, dayPicker.value)
+            listener(yearPicker.value, monthPicker.value, dayPicker.value)
         }
-        monthPicker.setOnValueChangedListener { _, _, newVal ->
-            daysOfMonthFixer(newVal)
-            informListener(listener)
+        monthPicker.setOnValueChangedListener { _, _, newMonth ->
+            daysOfMonthFixer(yearPicker.value, newMonth, dayPicker.value)
+            listener(yearPicker.value, monthPicker.value, dayPicker.value)
         }
         dayPicker.setOnValueChangedListener { _, _, _ ->
-            informListener(listener)
+            listener(yearPicker.value, monthPicker.value, dayPicker.value)
         }
-    }
-
-    private fun informListener(listener: (Int, Int, Int) -> Unit) {
-        listener(yearPicker.value, monthPicker.value, dayPicker.value)
     }
 }

@@ -3,5 +3,8 @@
     <declare-styleable name="PersianLinearDatePicker">
         <attr name="minYear" format="integer" />
         <attr name="maxYear" format="integer" />
+        <attr name="defaultYear" format="integer" />
+        <attr name="defaultMonth" format="integer" />
+        <attr name="defaultDay" format="integer" />
     </declare-styleable>
 </resources>
