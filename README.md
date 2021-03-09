@@ -25,7 +25,6 @@ Also the numbers are shown in Persian by default to users.
 ### Library
 
 This project is made by Kotlin and AndroidX completely and is not a forked or refactored code.
-The design is inspired by [PersianDatePicker](https://github.com/alibehzadian/PersianDatePicker).
 
 ### Current Functions
 
@@ -37,6 +36,9 @@ Functions that are available in this library are:
 *   getSelectedYear
 *   getSelectedMonth
 *   getSelectedDay
+*   getSelectedGregorianYear
+*   getSelectedGregorianMonth
+*   getSelectedGregorianDay
 *   getFormattedDate
 *   getPersianFormattedDate
 *   setOnDateChangedListener
@@ -67,18 +69,15 @@ Add PersianLinearDatePicker view to your xml:
         android:id="@+id/datePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+	app:defaultDay="20"
+        app:defaultMonth="6"
+        app:defaultYear="1400"
         app:maxYear="1420"
         app:minYear="1320" />
 ```
 Note that maxYear and minYear are optional. If you dont set any values for minYear or maxYear,
 1320..1420 will be used as default values.
 
-### TODO
-
-I will add these features in the future:
-
-*   Calculating leap years
-*   Converting a date to Gregorian date
 
 ## License
 
