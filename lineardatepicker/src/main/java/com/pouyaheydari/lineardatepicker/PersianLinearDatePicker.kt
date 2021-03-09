@@ -81,15 +81,9 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
     }
 
     private fun changeShowingNumbersToPersian() {
-        yearPicker.setFormatter {
-            it.toString().toPersianNumber()
-        }
-        monthPicker.setFormatter {
-            it.toString().toPersianNumber()
-        }
-        dayPicker.setFormatter {
-            it.toString().toPersianNumber()
-        }
+        yearPicker.setFormatter { it.toString().toPersianNumber() }
+        monthPicker.setFormatter { it.toString().toPersianNumber() }
+        dayPicker.setFormatter { it.toString().toPersianNumber() }
     }
 
     /**
@@ -99,7 +93,8 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      */
     fun setMaxYear(maxYear: Int, minYear: Int) {
         yearPicker.maxValue =
-            if (maxYear >= minYear) maxYear else throw IllegalArgumentException("maxYear must be equals or greater that minYear")
+            if (maxYear >= minYear) maxYear else
+                throw IllegalArgumentException("maxYear must be equals or greater that minYear")
     }
 
     /**
@@ -109,7 +104,8 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      */
     fun setMinYear(minYear: Int) {
         yearPicker.minValue =
-            if (minYear > 1000) minYear else throw IllegalArgumentException("minYear must be greater that 1000")
+            if (minYear > 1000) minYear else
+                throw IllegalArgumentException("minYear must be greater that 1000")
     }
 
     /**
@@ -156,6 +152,24 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      * Returns selected day to user
      */
     fun getSelectedDay() = dayPicker.value
+
+    /**
+     * Returns selected year in Gregorian to user
+     */
+    fun getSelectedGregorianYear() =
+        calendar.setIranianDate(yearPicker.value, monthPicker.value, dayPicker.value).gregorianYear
+
+    /**
+     * Returns selected month in Gregorian to user
+     */
+    fun getSelectedGregorianMonth() =
+        calendar.setIranianDate(yearPicker.value, monthPicker.value, dayPicker.value).gregorianMonth
+
+    /**
+     * Returns selected day to user in Gregorian
+     */
+    fun getSelectedGregorianDay() =
+        calendar.setIranianDate(yearPicker.value, monthPicker.value, dayPicker.value).gregorianDay
 
     /**
      *  Returns the date in order of: Year Month Day
