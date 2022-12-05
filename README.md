@@ -60,7 +60,7 @@ Then add the dependency:
 
  ```groovy
    dependencies {
-    implementation ("com.github.SirLordPouya:PersianLinearDatePicker:1.3.0")
+    implementation ("com.github.SirLordPouya:PersianLinearDatePicker:latest_version")
 }
   ```
 
