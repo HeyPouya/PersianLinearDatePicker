@@ -60,7 +60,7 @@ Then add the dependency:
 
  ```groovy
    dependencies {
-    implementation 'com.github.SirLordPouya:PersianLinearDatePicker:1.3.0'
+    implementation ("com.github.SirLordPouya:PersianLinearDatePicker:1.3.0")
 }
   ```
 
@@ -68,9 +68,15 @@ Add PersianLinearDatePicker view to your xml:
 
 ```xml
 
-<com.pouyaheydari.lineardatepicker.PersianLinearDatePicker android:id="@+id/datePicker"
-    android:layout_width="wrap_content" android:layout_height="wrap_content" app:defaultDay="20"
-    app:defaultMonth="6" app:defaultYear="1400" app:maxYear="1420" app:minYear="1320" />
+<com.pouyaheydari.lineardatepicker.PersianLinearDatePicker
+    android:id="@+id/datePicker"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:defaultDay="20"
+    app:defaultMonth="6"
+    app:defaultYear="1400"
+    app:maxYear="1420"
+    app:minYear="1320" />
 ```
 
 Note that maxYear and minYear are optional. If you dont set any values for minYear or maxYear,
