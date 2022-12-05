@@ -1,4 +1,5 @@
 # Persian Date Picker
+
 An easy to use Android library to pick a date.
 
 [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
@@ -11,8 +12,8 @@ An easy to use Android library to pick a date.
 <img src="https://github.com/SirLordPouya/PersianLinearDatePicker/blob/master/shots/icon.png" width="250">
 </p>
 
-You can set the minimum and maximum dates to be shown to the user. After user selects the desired date,
-you can get the year, month and day separator or joined together by any separator you like.
+You can set the minimum and maximum dates to be shown to the user. After user selects the desired
+date, you can get the year, month and day separator or joined together by any separator you like.
 
 Also the numbers are shown in Persian by default to users.
 
@@ -30,18 +31,18 @@ This project is made by Kotlin and AndroidX completely and is not a forked or re
 
 Functions that are available in this library are:
 
-*   setMaxYear
-*   setMinYear
-*   setDate
-*   getSelectedYear
-*   getSelectedMonth
-*   getSelectedDay
-*   getSelectedGregorianYear
-*   getSelectedGregorianMonth
-*   getSelectedGregorianDay
-*   getFormattedDate
-*   getPersianFormattedDate
-*   setOnDateChangedListener
+* setMaxYear
+* setMinYear
+* setDate
+* getSelectedYear
+* getSelectedMonth
+* getSelectedDay
+* getSelectedGregorianYear
+* getSelectedGregorianMonth
+* getSelectedGregorianDay
+* getFormattedDate
+* getPersianFormattedDate
+* setOnDateChangedListener
 
 ### Usage
 
@@ -49,39 +50,37 @@ First add maven repository to your project level gradle file:
 
 ```groovy
    allprojects {
-      repositories {
-		maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
  ```
- Then add the dependency:
- 
+
+Then add the dependency:
+
  ```groovy
    dependencies {
-	  implementation 'com.github.SirLordPouya:PersianLinearDatePicker:1.3.0'
-	}
+    implementation 'com.github.SirLordPouya:PersianLinearDatePicker:1.3.0'
+}
   ```
 
 Add PersianLinearDatePicker view to your xml:
 
 ```xml
-    <com.pouyaheydari.lineardatepicker.PersianLinearDatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-	app:defaultDay="20"
-        app:defaultMonth="6"
-        app:defaultYear="1400"
-        app:maxYear="1420"
-        app:minYear="1320" />
+
+<com.pouyaheydari.lineardatepicker.PersianLinearDatePicker android:id="@+id/datePicker"
+    android:layout_width="wrap_content" android:layout_height="wrap_content" app:defaultDay="20"
+    app:defaultMonth="6" app:defaultYear="1400" app:maxYear="1420" app:minYear="1320" />
 ```
+
 Note that maxYear and minYear are optional. If you dont set any values for minYear or maxYear,
 1320..1420 will be used as default values.
 
-
 ## License
 
-PersianLinearDatePicker is released under the Apache License 2.0. See [LICENSE](https://github.com/SirLordPouya/PersianLinearDatePicker/blob/master/LICENSE.md) for details.
+PersianLinearDatePicker is released under the Apache License 2.0.
+See [LICENSE](https://github.com/SirLordPouya/PersianLinearDatePicker/blob/master/LICENSE.md) for
+details.
 
 Copyright (c) 2020 Pouya Heydari
 

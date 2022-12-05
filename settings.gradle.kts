@@ -1,0 +1,2 @@
+include(":app", ":lineardatepicker")
+rootProject.name = "PersianLinearDatePicker"
