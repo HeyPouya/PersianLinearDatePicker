@@ -4,9 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import com.pouyaheydari.lineardatepicker.databinding.LayoutPersianLinearDatePickerBinding
 import com.pouyaheydari.lineardatepicker.utils.CalendarTool
 import com.pouyaheydari.lineardatepicker.utils.toPersianNumber
-import kotlinx.android.synthetic.main.layout_persian_linear_date_picker.view.*
 import java.util.*
 
 
@@ -31,11 +31,13 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
     private val gregorianCalendar = GregorianCalendar()
     private val calendar = CalendarTool(gregorianCalendar)
 
+    private var binding: LayoutPersianLinearDatePickerBinding
+
     constructor(context: Context) : this(context, null)
 
     init {
         val inflater = LayoutInflater.from(context)
-        inflater.inflate(R.layout.layout_persian_linear_date_picker, this)
+        binding = LayoutPersianLinearDatePickerBinding.inflate(inflater, this, true)
 
         val typedArray =
             context.obtainStyledAttributes(attr, R.styleable.PersianLinearDatePicker)
@@ -71,19 +73,19 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
 
 
     private fun setDays(maxDay: Int) {
-        dayPicker.minValue = 1
-        dayPicker.maxValue = maxDay
+        binding.dayPicker.minValue = 1
+        binding.dayPicker.maxValue = maxDay
     }
 
     private fun setMonths() {
-        monthPicker.minValue = 1
-        monthPicker.maxValue = 12
+        binding.monthPicker.minValue = 1
+        binding.monthPicker.maxValue = 12
     }
 
     private fun changeShowingNumbersToPersian() {
-        yearPicker.setFormatter { it.toString().toPersianNumber() }
-        monthPicker.setFormatter { it.toString().toPersianNumber() }
-        dayPicker.setFormatter { it.toString().toPersianNumber() }
+        binding.yearPicker.setFormatter { it.toString().toPersianNumber() }
+        binding.monthPicker.setFormatter { it.toString().toPersianNumber() }
+        binding.dayPicker.setFormatter { it.toString().toPersianNumber() }
     }
 
     /**
@@ -92,7 +94,7 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      * @param maxYear Maximum year that should be included in the picker
      */
     fun setMaxYear(maxYear: Int, minYear: Int) {
-        yearPicker.maxValue =
+        binding.yearPicker.maxValue =
             if (maxYear >= minYear) maxYear else
                 throw IllegalArgumentException("maxYear must be equals or greater that minYear")
     }
@@ -103,7 +105,7 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      * @param minYear Minimum year that should be included in the picker
      */
     fun setMinYear(minYear: Int) {
-        yearPicker.minValue =
+        binding.yearPicker.minValue =
             if (minYear > 1000) minYear else
                 throw IllegalArgumentException("minYear must be greater that 1000")
     }
@@ -120,9 +122,9 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
         dateCorrectnessChecker(year, month, day)
         daysOfMonthFixer(year, month, day)
 
-        yearPicker.value = year
-        monthPicker.value = month
-        dayPicker.value = day
+        binding.yearPicker.value = year
+        binding.monthPicker.value = month
+        binding.dayPicker.value = day
     }
 
     private fun dateCorrectnessChecker(year: Int, month: Int, day: Int) {
@@ -141,35 +143,47 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
     /**
      * Returns selected year to user
      */
-    fun getSelectedYear() = yearPicker.value
+    fun getSelectedYear() = binding.yearPicker.value
 
     /**
      * Returns selected month to user
      */
-    fun getSelectedMonth() = monthPicker.value
+    fun getSelectedMonth() = binding.monthPicker.value
 
     /**
      * Returns selected day to user
      */
-    fun getSelectedDay() = dayPicker.value
+    fun getSelectedDay() = binding.dayPicker.value
 
     /**
      * Returns selected year in Gregorian to user
      */
     fun getSelectedGregorianYear() =
-        calendar.setIranianDate(yearPicker.value, monthPicker.value, dayPicker.value).gregorianYear
+        calendar.setIranianDate(
+            binding.yearPicker.value,
+            binding.monthPicker.value,
+            binding.dayPicker.value
+        ).gregorianYear
 
     /**
      * Returns selected month in Gregorian to user
      */
     fun getSelectedGregorianMonth() =
-        calendar.setIranianDate(yearPicker.value, monthPicker.value, dayPicker.value).gregorianMonth
+        calendar.setIranianDate(
+            binding.yearPicker.value,
+            binding.monthPicker.value,
+            binding.dayPicker.value
+        ).gregorianMonth
 
     /**
      * Returns selected day to user in Gregorian
      */
     fun getSelectedGregorianDay() =
-        calendar.setIranianDate(yearPicker.value, monthPicker.value, dayPicker.value).gregorianDay
+        calendar.setIranianDate(
+            binding.yearPicker.value,
+            binding.monthPicker.value,
+            binding.dayPicker.value
+        ).gregorianDay
 
     /**
      *  Returns the date in order of: Year Month Day
@@ -178,7 +192,7 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      *  slash will be used by default
      */
     fun getFormattedDate(format: Char = '/') =
-        "${yearPicker.value}$format${monthPicker.value}$format${dayPicker.value}"
+        "${binding.yearPicker.value}$format${binding.monthPicker.value}$format${binding.dayPicker.value}"
 
     /**
      *  Returns the date in order of: Year Month Day in Persian numbers
@@ -187,7 +201,7 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      *  slash will be used by default
      */
     fun getPersianFormattedDate(format: Char = '/') =
-        "${yearPicker.value}$format${monthPicker.value}$format${dayPicker.value}".toPersianNumber()
+        "${binding.yearPicker.value}$format${binding.monthPicker.value}$format${binding.dayPicker.value}".toPersianNumber()
 
     /**
      * Informs the listener that date is changed
@@ -195,17 +209,17 @@ class PersianLinearDatePicker(context: Context, attr: AttributeSet?) : LinearLay
      * @param listener accepts a lambda to pass the year, month and day
      */
     fun setOnDateChangedListener(listener: (year: Int, month: Int, day: Int) -> Unit) {
-        yearPicker.setOnValueChangedListener { _, _, newYear ->
-            if (monthPicker.value == 12)
-                daysOfMonthFixer(newYear, monthPicker.value, dayPicker.value)
-            listener(yearPicker.value, monthPicker.value, dayPicker.value)
+        binding.yearPicker.setOnValueChangedListener { _, _, newYear ->
+            if (binding.monthPicker.value == 12)
+                daysOfMonthFixer(newYear, binding.monthPicker.value, binding.dayPicker.value)
+            listener(binding.yearPicker.value, binding.monthPicker.value, binding.dayPicker.value)
         }
-        monthPicker.setOnValueChangedListener { _, _, newMonth ->
-            daysOfMonthFixer(yearPicker.value, newMonth, dayPicker.value)
-            listener(yearPicker.value, monthPicker.value, dayPicker.value)
+        binding.monthPicker.setOnValueChangedListener { _, _, newMonth ->
+            daysOfMonthFixer(binding.yearPicker.value, newMonth, binding.dayPicker.value)
+            listener(binding.yearPicker.value, binding.monthPicker.value, binding.dayPicker.value)
         }
-        dayPicker.setOnValueChangedListener { _, _, _ ->
-            listener(yearPicker.value, monthPicker.value, dayPicker.value)
+        binding.dayPicker.setOnValueChangedListener { _, _, _ ->
+            listener(binding.yearPicker.value, binding.monthPicker.value, binding.dayPicker.value)
         }
     }
 }

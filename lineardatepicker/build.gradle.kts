@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-android-extensions")
 }
 android {
     compileSdk = 33
@@ -11,6 +10,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     namespace = "com.pouyaheydari.lineardatepicker"
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
