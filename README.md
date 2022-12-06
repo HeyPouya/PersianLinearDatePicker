@@ -1,6 +1,6 @@
 # Persian Date Picker
 
-An easy to use Android library to pick a date.
+**An easy to use Android library to pick a date.**
 
 [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
 [![Build Status](https://travis-ci.org/SirLordPouya/PersianLinearDatePicker.svg?branch=master)](https://travis-ci.org/SirLordPouya/PersianLinearDatePicker)
@@ -13,9 +13,9 @@ An easy to use Android library to pick a date.
 </p>
 
 You can set the minimum and maximum dates to be shown to the user. After user selects the desired
-date, you can get the year, month and day separator or joined together by any separator you like.
+date, you can get the year, month and day separated, or joined together by any separator character you like.
 
-Also the numbers are shown in Persian by default to users.
+Also the numbers are shown in Persian characters by default to users.
 
 <p align="center">
 <img src="https://github.com/SirLordPouya/PersianLinearDatePicker/blob/master/shots/Screenshot_3.png" width="450">
@@ -25,7 +25,7 @@ Also the numbers are shown in Persian by default to users.
 
 ### Library
 
-This project is made by Kotlin and AndroidX completely and is not a forked or refactored code.
+This project is made in Kotlin and AndroidX.
 
 ### Current Functions
 
@@ -79,7 +79,7 @@ Add PersianLinearDatePicker view to your xml:
     app:minYear="1320" />
 ```
 
-Note that maxYear and minYear are optional. If you dont set any values for minYear or maxYear,
+Note that maxYear and minYear are optional. If you don't set any values for minYear or maxYear,
 1320..1420 will be used as default values.
 
 ## License

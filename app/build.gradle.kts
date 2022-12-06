@@ -8,8 +8,8 @@ android {
         applicationId = "com.pouyaheydari.persianlineardatepicker"
         minSdk = 16
         targetSdk = 33
-        versionCode = 140
-        versionName = "1.4.0"
+        versionCode = 150
+        versionName = "1.5.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
