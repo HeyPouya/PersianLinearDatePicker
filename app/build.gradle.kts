@@ -1,15 +1,16 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
 }
 android {
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdkVersion.get().toInt()
     defaultConfig {
         applicationId = "com.pouyaheydari.persianlineardatepicker"
-        minSdk = 16
-        targetSdk = 34
-        versionCode = 150
-        versionName = "1.5.0"
+        minSdk = libs.versions.minSdkVersion.get().toInt()
+        targetSdk = libs.versions.targetSdkVersion.get().toInt()
+        versionCode = libs.versions.appVersion.get().toInt()
+        versionName = libs.versions.appVersion.get()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -37,11 +38,11 @@ dependencies {
     implementation(project(":lineardatepicker"))
 
     //Support
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintLayout)
 
     //Test
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation(libs.junit4)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

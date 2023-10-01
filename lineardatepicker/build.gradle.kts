@@ -1,12 +1,13 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
     `maven-publish`
 }
 android {
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdkVersion.get().toInt()
     defaultConfig {
-        minSdk = 16
+        minSdk = libs.versions.minSdkVersion.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     namespace = "com.pouyaheydari.lineardatepicker"
@@ -30,13 +31,13 @@ android {
 
 dependencies {
     //Support
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintLayout)
 
     //Test
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation(libs.junit4)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 
 }
 publishing {
@@ -44,7 +45,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.pouyaheydari.lineardatepicker"
             artifactId = "lineardatepicker"
-            version = "1.5.0"
+            version = libs.versions.appVersion.get()
             afterEvaluate {
                 from(components["release"])
             }
