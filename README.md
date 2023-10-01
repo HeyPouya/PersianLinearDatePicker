@@ -3,7 +3,6 @@
 **An easy to use Android library to pick a date.**
 
 [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
-[![Build Status](https://travis-ci.org/SirLordPouya/PersianLinearDatePicker.svg?branch=master)](https://travis-ci.org/SirLordPouya/PersianLinearDatePicker)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7e8f094fd77044b5b26bc6c157bfbbc3)](https://www.codacy.com/manual/SirLordPouya/AndroidAppUpdater?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SirLordPouya/AndroidAppUpdater&amp;utm_campaign=Badge_Grade)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 [![](https://jitpack.io/v/SirLordPouya/PersianLinearDatePicker.svg)](https://jitpack.io/#SirLordPouya/PersianLinearDatePicker)
