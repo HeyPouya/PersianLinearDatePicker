@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import com.pouyaheydari.lineardatepicker.databinding.LayoutPersianLinearDatePickerBinding
 import com.pouyaheydari.lineardatepicker.utils.CalendarTool
 import com.pouyaheydari.lineardatepicker.utils.toPersianNumber
-import java.util.*
+import java.util.GregorianCalendar
 
 
 const val DEFAULT_MIN_YEAR = 1320
